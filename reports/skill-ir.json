@@ -1,0 +1,21 @@
+{
+  "package": {
+    "name": "qiaomu-flat-layout-advisor",
+    "version": "0.1.0"
+  },
+  "name": "qiaomu-flat-layout-advisor",
+  "version": "0.1.0",
+  "intent": {
+    "job": "Diagnose an existing 2D graphic layout and propose evidence-based revisions.",
+    "users": ["graphic designers", "art directors", "content creators"],
+    "inputs": ["layout image or description", "optional goals and constraints"],
+    "outputs": ["observations", "diagnosis", "reference laws", "prioritized revision plan"],
+    "exclusions": ["automatic redesign by default", "unsupported performance claims", "copywriting-only tasks"]
+  },
+  "evidence_boundary": {
+    "direct": ["visible image relationships", "catalog metadata"],
+    "inferred": ["layout law applicability", "likely reading path", "recommended trade-offs"],
+    "missing": ["human validation", "conversion or engagement impact"]
+  },
+  "source": "nevertoday/350-layout-compositions"
+}

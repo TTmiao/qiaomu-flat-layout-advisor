@@ -1,0 +1,19 @@
+{
+  "name": "qiaomu-flat-layout-advisor",
+  "version": "0.1.0",
+  "owner": "Qiaomu",
+  "updated_at": "2026-09-02",
+  "status": "active",
+  "maturity_tier": "production",
+  "lifecycle_stage": "production",
+  "context_budget_tier": "production",
+  "review_cadence": "quarterly",
+  "description": "Evidence-based 2D layout diagnosis using the 350-layout-compositions catalog.",
+  "entrypoint": "SKILL.md",
+  "license": "MIT",
+  "source": "https://github.com/nevertoday/350-layout-compositions",
+  "author": "Qiaomu",
+  "target_platforms": ["openai", "claude", "generic", "agent-skills-compatible", "vscode"],
+  "factory_components": ["references", "scripts", "evals", "reports"],
+  "release_gates": ["validate_skill", "trigger_eval", "install_verification", "evidence_bound_claims"]
+}
