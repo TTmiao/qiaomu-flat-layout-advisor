@@ -1,0 +1,55 @@
+interface:
+  display_name: "Qiaomu Flat Layout Advisor"
+  short_description: "Diagnose 2D layouts with evidence-based reference cases"
+  default_prompt: "Use qiaomu-flat-layout-advisor to inspect my uploaded flat design, separate observations from inferences, retrieve relevant cases from 350-layout-compositions, and give prioritized revision advice. Preserve my content and brand intent. Do not redesign unless I explicitly ask."
+  examples:
+    - "诊断这张海报的标题层级、重心和留白"
+    - "基于 350 种排版案例，告诉我这张书封面哪里不稳"
+    - "不要重做，只给我三条优先级最高的版式修改建议"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+    - "vscode"
+  activation:
+    mode: "manual"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "bash"
+  trust:
+    source_tier: "reviewed-public-catalog"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "allow catalog metadata and read-only image review; forbid unreviewed execution"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "optional read-only access to the public catalog"
+    file_write: "none by default; package files only when the user explicitly requests edits"
+    subprocess: "optional local catalog retrieval helper"
+    interactive: "avoid unless the user requests a sync"
+  degradation:
+    openai: "metadata-adapter"
+    claude: "neutral-source-plus-adapter"
+    generic: "neutral-source"
+    agent-skills-compatible: "canonical-source"
+    vscode: "neutral-source-plus-review-notes"
+gates:
+  scaffold:
+    - "SKILL.md frontmatter"
+    - "README hook and natural trigger examples"
+    - "clear exclusions"
+  production:
+    - "prior-art research report or explicit missing evidence"
+    - "agents/interface.yaml"
+    - "evals/trigger_cases.json"
+    - "install and README verification"
+    - "root-only discoverable SKILL.md entrypoint"
+  library:
+    - "reports/skill-ir.json"
+    - "portability notes"
+  governed:
+    - "output contract"
+    - "trust boundary"

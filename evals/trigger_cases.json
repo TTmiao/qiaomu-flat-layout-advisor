@@ -1,0 +1,49 @@
+{
+  "recommended_threshold": 0.34,
+  "description_required_concepts": ["skill", "source_material", "authoring_action", "qiaomu"],
+  "positive_concepts": {
+    "skill": ["skill", "agent skill", "技能", "助手", "能力"],
+    "source_material": ["layout", "poster", "cover", "graphic", "composition", "排版", "海报", "封面", "版式", "图鉴", "案例"],
+    "authoring_action": ["create", "turn", "convert", "package", "build", "make", "diagnose", "improve", "inspect", "创建", "做成", "封装", "整理", "制作", "诊断", "优化", "体检", "建议"],
+    "qiaomu": ["qiaomu", "乔木", "向阳乔木"],
+    "eval_release": ["eval", "trigger", "output", "评估", "触发", "边界"],
+    "prior_art": ["reference", "catalog", "case", "案例", "图鉴", "借鉴"]
+  },
+  "negative_patterns": ["不要做成 skill", "不用做成 skill", "只要总结", "翻译一下", "写个标题", "brainstorm only", "translate only", "还没发图", "没有发图", "没发图"],
+  "should_trigger": [
+    {
+      "id": "positive-poster-critique",
+      "text": "我上传了一张活动海报，帮我按照 350 种排版案例诊断标题层级、留白和阅读路径，并给出修改建议。",
+      "reason": "明确的平面成稿诊断和案例对照请求"
+    },
+    {
+      "id": "positive-cover-revision",
+      "text": "这是我的书封面，想知道构图重心和字体网格哪里不稳，找几个相关案例说明怎么改。",
+      "reason": "封面版式评审与案例检索"
+    },
+    {
+      "id": "positive-social-graphic",
+      "text": "给这张小红书知识卡片做平面排版体检，不要重做，按优先级告诉我应该先调哪三处。",
+      "reason": "2D 社交图形的约束式改稿建议"
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "id": "negative-copywriting",
+      "text": "帮我把这段活动文案改得更有感染力。",
+      "reason": "没有版式诊断任务"
+    },
+    {
+      "id": "negative-web-layout-code",
+      "text": "请用 React 写一个响应式后台页面布局。",
+      "reason": "代码和网页 UI 实现，不是平面成稿诊断"
+    }
+  ],
+  "near_neighbor": [
+    {
+      "id": "boundary-image-missing",
+      "text": "我想优化海报排版，但现在还没发图，你先告诉我哪里有问题。",
+      "reason": "任务相关，但必须先索取图像或结构化描述"
+    }
+  ]
+}
